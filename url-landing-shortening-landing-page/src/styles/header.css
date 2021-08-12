@@ -1,0 +1,66 @@
+header {
+  display: grid;
+  grid-auto-flow: column;
+}
+.title {
+  justify-self: start;
+  padding-left: 0.5rem;
+  font-weight: 700;
+  font-size: 2em;
+}
+.nav {
+  justify-self: end;
+  padding-right: 1rem;
+}
+.svg-inline--fa.fa-w-14 {
+  width: 2em;
+  height: 2em;
+  margin: 0.5em;
+  color: gray;
+}
+.nav-menu {
+  background-color: #3a3053;
+  color: white;
+  position: absolute;
+  z-index: 9999;
+  right: 1.5rem;
+  width: 350px;
+  border-radius: 10px;
+  padding-top: 1rem;
+}
+.menu-icon:hover {
+  filter: brightness(50%);
+  cursor: pointer;
+}
+.nav-menu-link {
+  padding: 0.8rem;
+  font-weight: 700;
+}
+.nav-menu-link:hover {
+  color: #2bd1d1;
+  cursor: pointer;
+}
+.white-line {
+  position: relative;
+  left: 50%;
+  width: 80%;
+  height: 0.5px;
+  transform: translate(-50%, 0);
+  background-color: gray;
+  margin: 0.8rem 0;
+}
+.nav-menu-signUp {
+  padding: 0.5rem 0;
+  margin-bottom: 2.5rem;
+  background-color: #2bd1d1;
+  width: 80%;
+  position: relative;
+  border-radius: 2rem;
+  left: 50%;
+  font-weight: 700;
+  transform: translate(-50%, 0);
+}
+.nav-menu-signUp:hover {
+  filter: brightness(1.75);
+  cursor: pointer;
+}
