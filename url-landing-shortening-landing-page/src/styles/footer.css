@@ -1,0 +1,29 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  background-color: #232027;
+  color: white;
+}
+.footer-link {
+  color: #9f9ea2;
+  padding: 0.2rem;
+}
+.footer-link:hover {
+  cursor: pointer;
+  color: aqua;
+}
+.social-media {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 2rem;
+}
+.social-media svg {
+  margin: 0.8rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.social-media svg:hover {
+  cursor: pointer;
+  fill: aqua;
+}
