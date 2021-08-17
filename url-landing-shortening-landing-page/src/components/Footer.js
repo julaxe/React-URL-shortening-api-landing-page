@@ -20,9 +20,6 @@ export default function Footer() {
     return <div className="footer-link">{props.children}</div>;
   }
   function SocialMedia(props) {
-    function LogoMedia(props) {
-      return <div className="logo-media">{props.logo}</div>;
-    }
     return (
       <div className="social-media">
         <FaFacebookSquare />

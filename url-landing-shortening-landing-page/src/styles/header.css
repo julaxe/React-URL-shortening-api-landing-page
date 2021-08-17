@@ -1,6 +1,6 @@
 header {
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: min-content auto;
 }
 .title {
   justify-self: start;
@@ -40,6 +40,37 @@ header {
   color: #2bd1d1;
   cursor: pointer;
 }
+.nav-desktop {
+  display: none;
+}
+.nav-desktop-left {
+  padding-left: 1rem;
+  display: flex;
+}
+.nav-desktop-right {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+}
+.nav-desktop-link {
+  padding: 1rem;
+  color: gray;
+}
+.nav-desktop-link:hover {
+  color: #2bd1d1;
+  cursor: pointer;
+}
+.nav-desktop-signUp {
+  background-color: #2bd1d1;
+  color: white;
+  border-radius: 2rem;
+  padding: 0.5rem 2rem;
+  font-weight: 700;
+}
+.nav-desktop-signUp:hover {
+  filter: brightness(1.75);
+  cursor: pointer;
+}
 .white-line {
   position: relative;
   left: 50%;
@@ -63,4 +94,23 @@ header {
 .nav-menu-signUp:hover {
   filter: brightness(1.75);
   cursor: pointer;
+}
+
+@media screen and (min-width: 1440px) {
+  header {
+    margin: 3rem;
+  }
+  .title {
+    padding-left: 0;
+  }
+  .nav {
+    justify-self: auto;
+  }
+  .menu {
+    display: none;
+  }
+  .nav-desktop {
+    display: grid;
+    grid-auto-flow: column;
+  }
 }

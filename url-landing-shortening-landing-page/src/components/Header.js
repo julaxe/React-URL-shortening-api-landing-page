@@ -7,7 +7,19 @@ function NavLink(props) {
   return <div className={props.className}>{props.children}</div>;
 }
 function NavBarDesktop(props) {
-  return <nav className="nav-desktop"></nav>;
+  return (
+    <nav className="nav-desktop">
+      <div className="nav-desktop-left">
+        <NavLink className="nav-desktop-link">Features</NavLink>
+        <NavLink className="nav-desktop-link">Pricing</NavLink>
+        <NavLink className="nav-desktop-link">Resources</NavLink>
+      </div>
+      <div className="nav-desktop-right">
+        <NavLink className="nav-desktop-link">Login</NavLink>
+        <NavLink className="nav-desktop-signUp">Sign Up</NavLink>
+      </div>
+    </nav>
+  );
 }
 function NavMenu(props) {
   return (

@@ -48,22 +48,26 @@ function ShortenIt(props) {
     return (
       <div className="advanced-statistics">
         <h2>Advanced Statistics</h2>
-        <p>
+        <p className="advanced-statistics-text">
           Track how your links are performing across the web with our advanced
           statistics dashboard.
         </p>
-        <Statistics logo={IconBrandRecognition} title="Brand Recognition">
-          Boost your brand recognition with each click. Generic links don't mean
-          a thing. Branded links help instill confidence in your content.
-        </Statistics>
-        <Statistics logo={IconDetailedRecords} title="Detailed Records">
-          Gain insights into who is clicking your links. Knowing when and where
-          people engage with your content helps inform better decisions.
-        </Statistics>
-        <Statistics logo={IconFullyCustomizable} title="Fully Customizable">
-          Improve brand awareness and content discoverability through
-          customizable links, supercharging audience engagement.
-        </Statistics>
+
+        <div className="statistics-container center">
+          <Statistics logo={IconBrandRecognition} title="Brand Recognition">
+            Boost your brand recognition with each click. Generic links don't
+            mean a thing. Branded links help instill confidence in your content.
+          </Statistics>
+          <Statistics logo={IconDetailedRecords} title="Detailed Records">
+            Gain insights into who is clicking your links. Knowing when and
+            where people engage with your content helps inform better decisions.
+            <span className="greenBar"></span>
+          </Statistics>
+          <Statistics logo={IconFullyCustomizable} title="Fully Customizable">
+            Improve brand awareness and content discoverability through
+            customizable links, supercharging audience engagement.
+          </Statistics>
+        </div>
       </div>
     );
   }
@@ -71,7 +75,7 @@ function ShortenIt(props) {
     return (
       <div className="boost-your-links-today">
         <h2>Boost your links today</h2>
-        <div className="get-started-icon"> Get Started</div>
+        <div className="get-started-icon center"> Get Started</div>
       </div>
     );
   }
