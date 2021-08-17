@@ -45,11 +45,12 @@ p {
   background-repeat: no-repeat;
   background-size: auto;
   background-position: 100% 0%;
-  position: relative;
+  position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
   max-width: 600px;
+  z-index: 200;
 }
 .search-bar {
   padding: 1em;
@@ -71,6 +72,51 @@ p {
   filter: brightness(1.75);
   cursor: pointer;
 }
+.shorten-link {
+  background-color: white;
+  margin: 1rem 5%;
+  border-radius: 2px;
+  text-align: start;
+  display: grid;
+  grid-auto-flow: row;
+}
+.link {
+  padding: 1rem;
+  border-bottom: 2px solid #f0f1f6;
+}
+.shortened-link p {
+  padding: 1rem;
+  color: #26cecf;
+  margin: 0;
+  padding-bottom: 0;
+}
+.shortened-button {
+  background-color: #26cecf;
+  color: white;
+  width: auto;
+  margin: 1rem;
+  padding: 0.5rem 40%;
+  border-radius: 5px;
+  font-weight: 700;
+}
+.shortened-button:hover {
+  cursor: pointer;
+  filter: brightness(1.75);
+}
+.advanced-statistics {
+  padding-top: 6rem;
+  padding-bottom: 2rem;
+  position: relative;
+  z-index: 5;
+}
+.advanced-statistics h2 {
+  padding-top: 5rem;
+}
+.statistics-container {
+  display: grid;
+  grid-auto-flow: row;
+  justify-items: center;
+}
 .greenBar {
   position: absolute;
   left: 50%;
@@ -80,16 +126,6 @@ p {
   height: 300%;
   width: 10px;
   background-color: #26cecf;
-}
-.advanced-statistics {
-  padding-bottom: 2rem;
-  position: relative;
-  z-index: 5;
-}
-.statistics-container {
-  display: grid;
-  grid-auto-flow: row;
-  justify-items: center;
 }
 .statistics {
   position: relative;

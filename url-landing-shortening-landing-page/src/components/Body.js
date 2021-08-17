@@ -33,7 +33,25 @@ function ShortenIt(props) {
       </div>
     );
   }
+  function ShortenLink(props) {
+    return (
+      <div className="shorten-link">
+        <div className="link">{props.link}</div>
+        <div className="shortened-link">
+          <p>{props.shortenLink}</p>
+          <div className="shortened-button">Copy</div>
+        </div>
+      </div>
+    );
+  }
   function AdvancedStatistics(props) {
+    const dataTest = [
+      {
+        link: "https://www.frontendmentor.io",
+        shortenLink: "https://rel.ink/k4lKyk",
+      },
+      { link: "www.test.com", shortenLink: "https://rel.ink/lolaso" },
+    ];
     function Statistics(props) {
       return (
         <div className="statistics">
@@ -47,6 +65,9 @@ function ShortenIt(props) {
     }
     return (
       <div className="advanced-statistics">
+        {dataTest.map((obj) => (
+          <ShortenLink link={obj.link} shortenLink={obj.shortenLink} />
+        ))}
         <h2>Advanced Statistics</h2>
         <p className="advanced-statistics-text">
           Track how your links are performing across the web with our advanced
