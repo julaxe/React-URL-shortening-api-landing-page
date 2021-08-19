@@ -137,8 +137,17 @@ function ShortenIt(props) {
         </div>
       );
     }
+    function LoadingSpinner(props) {
+      return (
+        <div className="spinner">
+          <div></div>
+          <div></div>
+        </div>
+      );
+    }
     return (
       <div className="advanced-statistics">
+        {isLoading ? <LoadingSpinner /> : ""}
         {links
           ? links.map((obj) => (
               <ShortenLink
