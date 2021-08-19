@@ -104,10 +104,14 @@ p {
   padding: 0.5rem 40%;
   border-radius: 5px;
   font-weight: 700;
+  text-align: center;
 }
 .shortened-button:hover {
   cursor: pointer;
   filter: brightness(1.75);
+}
+.clicked {
+  background-color: #3a3053;
 }
 .advanced-statistics {
   padding-top: 6rem;

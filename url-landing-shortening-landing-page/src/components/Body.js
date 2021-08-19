@@ -55,6 +55,7 @@ function ShortenIt(props) {
         {
           link: data.result.original_link,
           shortenLink: data.result.full_short_link,
+          clicked: false,
         },
       ]);
     }
@@ -98,16 +99,28 @@ function ShortenIt(props) {
     function copyToClipboard(event) {
       const textToCopy = event.target.parentElement.children[0].textContent;
       navigator.clipboard.writeText(textToCopy);
-      window.alert("link copied");
+      const newLinks = links.map((element) => {
+        if (element.shortenLink === textToCopy) {
+          return { ...element, clicked: true };
+        }
+        return { ...element, clicked: false };
+      });
+      setLinks(newLinks);
     }
     return (
       <div className="shorten-link">
         <div className="link">{props.link}</div>
         <div className="shortened-link">
           <p>{props.shortenLink}</p>
-          <div className="shortened-button" onClick={copyToClipboard}>
-            Copy
-          </div>
+          {!props.clicked ? (
+            <div className="shortened-button" onClick={copyToClipboard}>
+              Copy
+            </div>
+          ) : (
+            <div className="shortened-button clicked" onClick={copyToClipboard}>
+              Copied!
+            </div>
+          )}
         </div>
       </div>
     );
@@ -132,6 +145,7 @@ function ShortenIt(props) {
                 key={obj.link}
                 link={obj.link}
                 shortenLink={obj.shortenLink}
+                clicked={obj.clicked}
               />
             ))
           : ""}
