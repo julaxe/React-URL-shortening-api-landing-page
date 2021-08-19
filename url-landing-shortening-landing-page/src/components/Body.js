@@ -51,12 +51,12 @@ function ShortenIt(props) {
         return;
       }
       setLinks([
-        ...links,
         {
           link: data.result.original_link,
           shortenLink: data.result.full_short_link,
           clicked: false,
         },
+        ...links,
       ]);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
