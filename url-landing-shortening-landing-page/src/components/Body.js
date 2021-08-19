@@ -35,7 +35,7 @@ function GetStarted(props) {
 function ShortenIt(props) {
   const searchBarRef = React.useRef(null);
   const [links, setLinks] = React.useState([]);
-  const { data, error, isLoading, run } = useAsync([]);
+  const { data, isError, isLoading, run } = useAsync([]);
 
   React.useEffect(() => {
     const parsedLinks = JSON.parse(localStorage.getItem("links") || "[]");
@@ -66,32 +66,48 @@ function ShortenIt(props) {
   }, [links]);
 
   const handleOnClick = () => {
+    if (isLoading) {
+      return;
+    }
     run(client(`shorten?url=${searchBarRef.current.value}`));
   };
 
   function Search(props) {
     return (
       <div className="search">
-        <input
-          ref={searchBarRef}
-          className="search-bar"
-          type="text"
-          placeholder="Shorten a link here..."
-        />
-        {error ? console.log(error) : ""}
+        <div>
+          {isError ? (
+            <div className="error-message">please provide a valid link</div>
+          ) : (
+            ""
+          )}
+          <input
+            ref={searchBarRef}
+            className="search-bar"
+            type="text"
+            placeholder="Shorten a link here..."
+          />
+        </div>
         <button className="search-button" onClick={handleOnClick}>
-          {isLoading ? "Loading" : "Shorten it!"}
+          {isLoading ? "Loading..." : "Shorten it!"}
         </button>
       </div>
     );
   }
   function ShortenLink(props) {
+    function copyToClipboard(event) {
+      const textToCopy = event.target.parentElement.children[0].textContent;
+      navigator.clipboard.writeText(textToCopy);
+      window.alert("link copied");
+    }
     return (
       <div className="shorten-link">
         <div className="link">{props.link}</div>
         <div className="shortened-link">
           <p>{props.shortenLink}</p>
-          <div className="shortened-button">Copy</div>
+          <div className="shortened-button" onClick={copyToClipboard}>
+            Copy
+          </div>
         </div>
       </div>
     );

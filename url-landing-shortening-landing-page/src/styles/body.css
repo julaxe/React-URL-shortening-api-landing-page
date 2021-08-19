@@ -58,6 +58,7 @@ p {
   border: none;
   margin-bottom: 1rem;
   font-size: 1em;
+  width: 100%;
 }
 .search-button {
   background-color: #2bd1d1;
@@ -84,6 +85,10 @@ p {
   padding: 1rem;
   border-bottom: 2px solid #f0f1f6;
   overflow: hidden;
+}
+.error-message {
+  padding-bottom: 1px;
+  color: rgb(250, 113, 113);
 }
 .shortened-link p {
   padding: 1rem;
