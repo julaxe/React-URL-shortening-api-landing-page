@@ -4,7 +4,19 @@ import Illustration from "../images/illustration-working.svg";
 import IconBrandRecognition from "../images/icon-brand-recognition.svg";
 import IconDetailedRecords from "../images/icon-detailed-records.svg";
 import IconFullyCustomizable from "../images/icon-fully-customizable.svg";
+import { useAsync } from "./Hooks";
+const apiURL = "https://api.shrtco.de/v2";
 
+function client(endpoint) {
+  return fetch(`${apiURL}/${endpoint}`).then(async (response) => {
+    const data = await response.json();
+    if (response.ok) {
+      return data;
+    } else {
+      return Promise.reject(data);
+    }
+  });
+}
 function GetStarted(props) {
   return (
     <div className="get-started">
@@ -21,15 +33,55 @@ function GetStarted(props) {
   );
 }
 function ShortenIt(props) {
+  const searchBarRef = React.useRef(null);
+  const [links, setLinks] = React.useState([]);
+  const { data, error, isLoading, run } = useAsync([]);
+
+  React.useEffect(() => {
+    const parsedLinks = JSON.parse(localStorage.getItem("links") || "[]");
+    setLinks(parsedLinks);
+  }, []);
+
+  React.useEffect(() => {
+    if (data) {
+      const repeatedLink = links.find(
+        (e) => e.link === data.result.original_link
+      );
+      if (repeatedLink) {
+        return;
+      }
+      setLinks([
+        ...links,
+        {
+          link: data.result.original_link,
+          shortenLink: data.result.full_short_link,
+        },
+      ]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
+
+  React.useEffect(() => {
+    localStorage.setItem("links", JSON.stringify(links));
+  }, [links]);
+
+  const handleOnClick = () => {
+    run(client(`shorten?url=${searchBarRef.current.value}`));
+  };
+
   function Search(props) {
     return (
       <div className="search">
         <input
+          ref={searchBarRef}
           className="search-bar"
           type="text"
           placeholder="Shorten a link here..."
         />
-        <button className="search-button">Shorten it!</button>
+        {error ? console.log(error) : ""}
+        <button className="search-button" onClick={handleOnClick}>
+          {isLoading ? "Loading" : "Shorten it!"}
+        </button>
       </div>
     );
   }
@@ -45,13 +97,6 @@ function ShortenIt(props) {
     );
   }
   function AdvancedStatistics(props) {
-    const dataTest = [
-      {
-        link: "https://www.frontendmentor.io",
-        shortenLink: "https://rel.ink/k4lKyk",
-      },
-      { link: "www.test.com", shortenLink: "https://rel.ink/lolaso" },
-    ];
     function Statistics(props) {
       return (
         <div className="statistics">
@@ -65,9 +110,15 @@ function ShortenIt(props) {
     }
     return (
       <div className="advanced-statistics">
-        {dataTest.map((obj) => (
-          <ShortenLink link={obj.link} shortenLink={obj.shortenLink} />
-        ))}
+        {links
+          ? links.map((obj) => (
+              <ShortenLink
+                key={obj.link}
+                link={obj.link}
+                shortenLink={obj.shortenLink}
+              />
+            ))
+          : ""}
         <h2>Advanced Statistics</h2>
         <p className="advanced-statistics-text">
           Track how your links are performing across the web with our advanced

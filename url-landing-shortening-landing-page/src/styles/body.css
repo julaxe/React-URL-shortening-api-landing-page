@@ -83,6 +83,7 @@ p {
 .link {
   padding: 1rem;
   border-bottom: 2px solid #f0f1f6;
+  overflow: hidden;
 }
 .shortened-link p {
   padding: 1rem;
