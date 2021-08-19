@@ -128,13 +128,14 @@ p {
 .shorten-link {
   background-color: white;
   margin: 1rem 5%;
+  padding: 0px 1rem;
   border-radius: 2px;
   text-align: start;
   display: grid;
   grid-auto-flow: row;
 }
 .link {
-  padding: 1rem;
+  padding: 1rem 0;
   border-bottom: 2px solid #f0f1f6;
   overflow: hidden;
 }
@@ -143,7 +144,7 @@ p {
   color: rgb(250, 113, 113);
 }
 .shortened-link p {
-  padding: 1rem;
+  padding: 1rem 0;
   color: #26cecf;
   margin: 0;
   padding-bottom: 0;
@@ -151,9 +152,9 @@ p {
 .shortened-button {
   background-color: #26cecf;
   color: white;
-  width: auto;
-  margin: 1rem;
-  padding: 0.5rem 40%;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0.5rem 0%;
   border-radius: 5px;
   font-weight: 700;
   text-align: center;
@@ -312,5 +313,21 @@ p {
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
+  }
+  .shorten-link {
+    grid-template-columns: 4fr 2fr;
+    align-items: end;
+  }
+  .shortened-link {
+    display: grid;
+    grid-template-columns: 70% 30%;
+    justify-items: center;
+    align-items: center;
+  }
+  .shortened-link p {
+    padding: 0.5rem;
+  }
+  .link {
+    border-bottom: 0;
   }
 }
