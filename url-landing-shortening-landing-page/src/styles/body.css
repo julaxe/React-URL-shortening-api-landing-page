@@ -127,12 +127,17 @@ p {
 }
 .shorten-link {
   background-color: white;
-  margin: 1rem 5%;
+  margin: 1rem 0;
   padding: 0px 1rem;
   border-radius: 2px;
   text-align: start;
   display: grid;
   grid-auto-flow: row;
+  max-width: 600px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 90%;
 }
 .link {
   padding: 1rem 0;
@@ -317,6 +322,7 @@ p {
   .shorten-link {
     grid-template-columns: 4fr 2fr;
     align-items: end;
+    max-width: 1440px;
   }
   .shortened-link {
     display: grid;
